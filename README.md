@@ -1,4 +1,4 @@
 reusable-rules
 =======================
 
-Java framework that allows the creation of reusable rules.
+Framework to help java developers to create reusable rules in his softwares.
