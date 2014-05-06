@@ -1,11 +1,11 @@
 /**
- * Neste pacote encontram-se classes que auxiliam na criação de regras que podem ser reutilizadas.<BR>
+ * Neste pacote encontram-se classes que auxiliam na cria&ccedil;ão de regras que podem ser reutilizadas.<BR>
  * <BR>
  * <B><I>Para entender melhor, veja o exemplo abaixo:</I></B><BR>
  * <BR>
  * Uma <tt>Pessoa</tt> tem os seguintes atributos: <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt>.<BR>
  * Para validar uma <tt>Pessoa</tt>, foram definidas as seguintes regras:<BR>
- * - O nome não pode ser <code>null</code> e deve começar com uma letra maiúscula e ter uma ou mais letras minúsculas;<BR>
+ * - O nome não pode ser <code>null</code> e deve come&ccedil;ar com uma letra maiúscula e ter uma ou mais letras minúsculas;<BR>
  * - A idade não pode ser negativa;<BR>
  * - O sexo só pode ser <code>'M'</code> ou <code>'F'</code>.<BR>
  * <BR>
@@ -26,10 +26,10 @@
  * }
  * </PRE>
  * 
- * <B>Agora criamos três especificações distintas para as regras que validam <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> da <tt>Pessoa</tt>.</B>
+ * <B>Agora criamos tr&ecirc;s especifica&ccedil;ões distintas para as regras que validam <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> da <tt>Pessoa</tt>.</B>
  * 
  * <PRE>
- * // Especificação da regra que valida o nome de uma Pessoa
+ * // Especifica&ccedil;ão da regra que valida o nome de uma Pessoa
  * class Nome implements Specification&lt;Pessoa, String&gt; {
  * 
  *     public boolean isSatisfiedBy(Pessoa pessoa, Collection&lt;String&gt; detalhes) {
@@ -39,7 +39,7 @@
  *             return false;
  *         }
  *         if (!nome.matches(&quot;[A-Z]{1}[a-z]+&quot;)) {
- *             detalhes.add(&quot;Nome precisa começar com letra maiuscula e ter pelo menos duas letras&quot;);
+ *             detalhes.add(&quot;Nome precisa come&ccedil;ar com letra maiuscula e ter pelo menos duas letras&quot;);
  *             return false;
  *         }
  *         return true;
@@ -48,7 +48,7 @@
  * </PRE>
  * 
  * <PRE>
- * // Especificação da regra que valida a idade de Pessoa
+ * // Especifica&ccedil;ão da regra que valida a idade de Pessoa
  * class Idade implements Specification&lt;Pessoa, String&gt; {
  * 
  *     public boolean isSatisfiedBy(Pessoa pessoa, Collection&lt;String&gt; detalhes) {
@@ -62,7 +62,7 @@
  * </PRE>
  * 
  * <PRE>
- * // Especificação da regra que valida o sexo de uma Pessoa
+ * // Especifica&ccedil;ão da regra que valida o sexo de uma Pessoa
  * class Sexo implements Specification&lt;Pessoa, String&gt; {
  * 
  *     public boolean isSatisfiedBy(Pessoa pessoa, Collection&lt;String&gt; detalhes) {
@@ -78,11 +78,11 @@
  * }
  * </PRE>
  * 
- * <B>Agora ja temos a classe <tt>Pessoa</tt> e as especificações das regras para <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> criadas.<BR>
+ * <B>Agora ja temos a classe <tt>Pessoa</tt> e as especifica&ccedil;ões das regras para <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> criadas.<BR>
  * Podemos então utilizar a classe <tt>Rule</tt> para validar instancias de <tt>Pessoa</tt> de diversas formas, por exemplo:</B>
  * 
  * <PRE>
- * // instanciamos as regras a partir das especificações 
+ * // instanciamos as regras a partir das especifica&ccedil;ões 
  * Rule&lt;Pessoa, String&gt; nome = Rule.from(new Nome());
  * Rule&lt;Pessoa, String&gt; idade = Rule.from(new Idade());
  * Rule&lt;Pessoa, String&gt; sexo = Rule.from(new Sexo());

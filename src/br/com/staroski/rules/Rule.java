@@ -5,25 +5,25 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Esta classe é reponsável por criar regras a partir de simples especificações.<BR>
+ * Esta classe &eacute; reponsável por criar regras a partir de simples especifica&ccedil;ões.<BR>
  * <BR>
- * <I> Para obter instancias desta classe, utilize o método {@link #from(Specification)}.</I><BR>
+ * <I> Para obter instancias desta classe, utilize o m&eacute;todo {@link #from(Specification)}.</I><BR>
  * <BR>
- * Através de uma instância de {@link Rule}, é possivel montar expressões complexas associando outras {@link Specification}s ou {@link Rule}s através
- * dos seguintes métodos:<BR>
+ * Atrav&eacute;s de uma inst&acirc;ncia de {@link Rule}, &eacute; possivel montar expressões complexas associando outras {@link Specification}s ou {@link Rule}s atrav&eacute;s
+ * dos seguintes m&eacute;todos:<BR>
  * - {@link #and(Specification)}<BR>
  * - {@link #andNot(Specification)}<BR>
  * - {@link #or(Specification)}<BR>
  * - {@link #orNot(Specification)}<BR>
  * - {@link #not()} <BR>
- * Outra característica interessante desta classe é o método {@link #getDetails()} que obtém detalhes do motivo de um objeto atender, ou não, 
- * dependendo da situação, a especificação da regra.<BR>
+ * Outra característica interessante desta classe &eacute; o m&eacute;todo {@link #getDetails()} que obt&eacute;m detalhes do motivo de um objeto atender, ou não, 
+ * dependendo da situa&ccedil;ão, a especifica&ccedil;ão da regra.<BR>
  * <BR>
  * <B><I>Veja o exemplo para entender como utiliza-la:</I></B><BR>
  * <BR>
  * Uma <tt>Pessoa</tt> tem os seguintes atributos: <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt>.<BR>
  * Para validar uma <tt>Pessoa</tt>, foram definidas as seguintes regras:<BR>
- * - O nome não pode ser <code>null</code> e deve começar com uma letra maiúscula e ter uma ou mais letras minúsculas;<BR>
+ * - O nome não pode ser <code>null</code> e deve come&ccedil;ar com uma letra maiúscula e ter uma ou mais letras minúsculas;<BR>
  * - A idade não pode ser negativa;<BR>
  * - O sexo só pode ser <code>'M'</code> ou <code>'F'</code>.<BR>
  * <BR>
@@ -44,10 +44,10 @@ import java.util.List;
  * }
  * </PRE>
  * 
- * <B>Agora criamos três especificações distintas para as regras que validam <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> da <tt>Pessoa</tt>.</B>
+ * <B>Agora criamos tr&ecirc;s especifica&ccedil;ões distintas para as regras que validam <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> da <tt>Pessoa</tt>.</B>
  * 
  * <PRE>
- * // Especificação da regra que valida o nome de uma Pessoa
+ * // Especifica&ccedil;ão da regra que valida o nome de uma Pessoa
  * class Nome implements Specification&lt;Pessoa, String&gt; {
  * 
  *     public boolean isSatisfiedBy(Pessoa pessoa, Collection&lt;String&gt; detalhes) {
@@ -57,7 +57,7 @@ import java.util.List;
  *             return false;
  *         }
  *         if (!nome.matches(&quot;[A-Z]{1}[a-z]+&quot;)) {
- *             detalhes.add(&quot;Nome precisa começar com letra maiuscula e ter pelo menos duas letras&quot;);
+ *             detalhes.add(&quot;Nome precisa come&ccedil;ar com letra maiuscula e ter pelo menos duas letras&quot;);
  *             return false;
  *         }
  *         return true;
@@ -66,7 +66,7 @@ import java.util.List;
  * </PRE>
  * 
  * <PRE>
- * // Especificação da regra que valida a idade de Pessoa
+ * // Especifica&ccedil;ão da regra que valida a idade de Pessoa
  * class Idade implements Specification&lt;Pessoa, String&gt; {
  * 
  *     public boolean isSatisfiedBy(Pessoa pessoa, Collection&lt;String&gt; detalhes) {
@@ -80,7 +80,7 @@ import java.util.List;
  * </PRE>
  * 
  * <PRE>
- * // Especificação da regra que valida o sexo de uma Pessoa
+ * // Especifica&ccedil;ão da regra que valida o sexo de uma Pessoa
  * class Sexo implements Specification&lt;Pessoa, String&gt; {
  * 
  *     public boolean isSatisfiedBy(Pessoa pessoa, Collection&lt;String&gt; detalhes) {
@@ -96,11 +96,11 @@ import java.util.List;
  * }
  * </PRE>
  * 
- * <B>Agora ja temos a classe <tt>Pessoa</tt> e as especificações das regras para <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> criadas.<BR>
+ * <B>Agora ja temos a classe <tt>Pessoa</tt> e as especifica&ccedil;ões das regras para <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt> criadas.<BR>
  * Podemos então utilizar a classe {@link Rule} para validar instancias de <tt>Pessoa</tt> de diversas formas, por exemplo:</B>
  * 
  * <PRE>
- * // instanciamos as regras a partir das especificações 
+ * // instanciamos as regras a partir das especifica&ccedil;ões 
  * Rule&lt;Pessoa, String&gt; nome = Rule.from(new Nome());
  * Rule&lt;Pessoa, String&gt; idade = Rule.from(new Idade());
  * Rule&lt;Pessoa, String&gt; sexo = Rule.from(new Sexo());
@@ -132,7 +132,7 @@ import java.util.List;
 public abstract class Rule<O, D> implements Specification<O, D> {
 
     /**
-     * Regra interna que realiza a operação <B>E</B> entre duas especificações.
+     * Regra interna que realiza a opera&ccedil;ão <B>E</B> entre duas especifica&ccedil;ões.
      * 
      * @param <X> Tipo de dado do objeto que pode ou não atender as regras.
      * @param <Y> Tipo de dado da lista de detalhes caso o objeto não atenda as regras.
@@ -140,19 +140,19 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     private static final class And<X, Y> extends Rule<X, Y> {
 
         /**
-         * A primeira especificação desta regra.
+         * A primeira especifica&ccedil;ão desta regra.
          */
         private final Specification<X, Y> spec1;
         /**
-         * A segunda especificação desta regra.
+         * A segunda especifica&ccedil;ão desta regra.
          */
         private final Specification<X, Y> spec2;
 
         /**
          * Cria uma nova regra.
          * 
-         * @param spec1 A primeira especificação desta regra.
-         * @param spec2 A segunda especificação desta regra.
+         * @param spec1 A primeira especifica&ccedil;ão desta regra.
+         * @param spec2 A segunda especifica&ccedil;ão desta regra.
          */
         protected And(final Specification<X, Y> spec1, final Specification<X, Y> spec2) {
             this.spec1 = spec1;
@@ -164,13 +164,13 @@ public abstract class Rule<O, D> implements Specification<O, D> {
          */
         @Override
         public boolean isSatisfiedBy(final X object, final Collection<Y> details) {
-            // precisa ser '&' ao invés de '&&' de forma a preencher os detalhes das duas especificações
+            // precisa ser '&' ao inv&eacute;s de '&&' de forma a preencher os detalhes das duas especifica&ccedil;ões
             return spec1.isSatisfiedBy(object, details) & spec2.isSatisfiedBy(object, details);
         }
     }
 
     /**
-     * Especialização de {@link LinkedList} que não aceita duplicatas.
+     * Especializa&ccedil;ão de {@link LinkedList} que não aceita duplicatas.
      * 
      * @param <X> Tipo de dado da lista.
      */
@@ -215,10 +215,10 @@ public abstract class Rule<O, D> implements Specification<O, D> {
         }
 
         /**
-         * Dado uma coleção, obtém os elementos desta coleção que não inclusos na lista atual.
+         * Dado uma cole&ccedil;ão, obt&eacute;m os elementos desta cole&ccedil;ão que não inclusos na lista atual.
          * 
-         * @param c Um coleção qualquer
-         * @return Os elementos da coleção que não estão inclusos na lista atual.
+         * @param c Um cole&ccedil;ão qualquer
+         * @return Os elementos da cole&ccedil;ão que não estão inclusos na lista atual.
          */
         private Collection<X> getNotContained(final Collection<? extends X> c) {
             final List<X> elements = new LinkedList<X>();
@@ -233,7 +233,7 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     }
 
     /**
-     * Regra interna que realiza criada a partir de uma especificação qualquer.
+     * Regra interna que realiza criada a partir de uma especifica&ccedil;ão qualquer.
      * 
      * @param <X> Tipo de dado do objeto que pode ou não atender as regras.
      * @param <Y> Tipo de dado da lista de detalhes caso o objeto não atenda as regras.
@@ -241,14 +241,14 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     private static final class Is<X, Y> extends Rule<X, Y> {
 
         /**
-         * A especificação desta regra.
+         * A especifica&ccedil;ão desta regra.
          */
         private final Specification<X, Y> spec;
 
         /**
          * Cria uma nova regra.
          * 
-         * @param spec A especificação desta regra.
+         * @param spec A especifica&ccedil;ão desta regra.
          */
         protected Is(final Specification<X, Y> spec) {
             this.spec = spec;
@@ -264,7 +264,7 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     }
 
     /**
-     * Regra interna que realiza a operação <B>NÃO</B> de uma especificação qualquer.
+     * Regra interna que realiza a opera&ccedil;ão <B>NÃO</B> de uma especifica&ccedil;ão qualquer.
      * 
      * @param <X> Tipo de dado do objeto que pode ou não atender as regras.
      * @param <Y> Tipo de dado da lista de detalhes caso o objeto não atenda as regras.
@@ -272,14 +272,14 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     private static final class Not<X, Y> extends Rule<X, Y> {
 
         /**
-         * A especificação desta regra.
+         * A especifica&ccedil;ão desta regra.
          */
         private final Specification<X, Y> spec;
 
         /**
          * Cria uma nova regra.
          * 
-         * @param spec A primeira especificação desta regra.
+         * @param spec A primeira especifica&ccedil;ão desta regra.
          */
         protected Not(final Specification<X, Y> spec) {
             this.spec = spec;
@@ -295,7 +295,7 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     }
 
     /**
-     * Regra interna que realiza a operação <B>OU</B> entre duas especificações.
+     * Regra interna que realiza a opera&ccedil;ão <B>OU</B> entre duas especifica&ccedil;ões.
      * 
      * @param <X> Tipo de dado do objeto que pode ou não atender as regras.
      * @param <Y> Tipo de dado da lista de detalhes caso o objeto não atenda as regras.
@@ -303,19 +303,19 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     private static final class Or<X, Y> extends Rule<X, Y> {
 
         /**
-         * A primeira especificação desta regra.
+         * A primeira especifica&ccedil;ão desta regra.
          */
         private final Specification<X, Y> spec1;
         /**
-         * A segunda especificação desta regra.
+         * A segunda especifica&ccedil;ão desta regra.
          */
         private final Specification<X, Y> spec2;
 
         /**
          * Cria uma nova regra.
          * 
-         * @param spec1 A primeira especificação desta regra.
-         * @param spec2 A segunda especificação desta regra.
+         * @param spec1 A primeira especifica&ccedil;ão desta regra.
+         * @param spec2 A segunda especifica&ccedil;ão desta regra.
          */
         protected Or(final Specification<X, Y> spec1, final Specification<X, Y> spec2) {
             this.spec1 = spec1;
@@ -327,14 +327,14 @@ public abstract class Rule<O, D> implements Specification<O, D> {
          */
         @Override
         public boolean isSatisfiedBy(final X object, final Collection<Y> details) {
-            // precisa ser '|' ao invés de '||' de forma a preencher os detalhes das duas especificações
+            // precisa ser '|' ao inv&eacute;s de '||' de forma a preencher os detalhes das duas especifica&ccedil;ões
             return spec1.isSatisfiedBy(object, details) | spec2.isSatisfiedBy(object, details);
         }
     }
 
     /**
-     * Obtém uma regra a partir de uma simples especificação, ou seja, informa-se uma implementação de {@link Specification} correspondente a regra
-     * desejada e obtém-se uma implementação de {@link Rule}.
+     * Obt&eacute;m uma regra a partir de uma simples especifica&ccedil;ão, ou seja, informa-se uma implementa&ccedil;ão de {@link Specification} correspondente a regra
+     * desejada e obt&eacute;m-se uma implementa&ccedil;ão de {@link Rule}.
      * 
      * @param <X> Tipo de dado do objeto que pode ou não atender as regras.
      * @param <Y> Tipo de dado da lista de detalhes caso o objeto não atenda as regras.
@@ -351,41 +351,41 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     private Details<D> details;
 
     /**
-     * Construtor privado, só é acessivel pelas <I>inner classes</I> {@link Is}, {@link Not}, {@link And} e {@link Or}.
+     * Construtor privado, só &eacute; acessivel pelas <I>inner classes</I> {@link Is}, {@link Not}, {@link And} e {@link Or}.
      */
     private Rule() {
         details = new Details<D>();
     }
 
     /**
-     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especificação desta regra <B>E</B> a especificação informada também
+     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especifica&ccedil;ão desta regra <B>E</B> a especifica&ccedil;ão informada tamb&eacute;m
      * atenderem ao mesmo objeto.<BR>
      * <BR>
-     * A operação <I>AND</I> possui o comportamento abaixo:
+     * A opera&ccedil;ão <I>AND</I> possui o comportamento abaixo:
      * 
      * <PRE>
      * objetoAtende = objetoAtendeRegra1 &amp; objetoAtendeRegra2
      * </PRE>
      * 
      * @param spec A {@link Specification} a ser adicionada a esta regra.
-     * @return Uma {@link Rule} que atende a um objeto se a especificação da regra atual e a especificação informada também atenderem a este objeto.
+     * @return Uma {@link Rule} que atende a um objeto se a especifica&ccedil;ão da regra atual e a especifica&ccedil;ão informada tamb&eacute;m atenderem a este objeto.
      */
     public final Rule<O, D> and(final Specification<O, D> spec) {
         return new And<O, D>(this, spec);
     }
 
     /**
-     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especificação desta regra atender <B>E</B> a especificação informada
+     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especifica&ccedil;ão desta regra atender <B>E</B> a especifica&ccedil;ão informada
      * <B>NÃO</B> atender ao mesmo objeto.<BR>
      * <BR>
-     * A operação <I>AND NOT</I> possui o comportamento abaixo:
+     * A opera&ccedil;ão <I>AND NOT</I> possui o comportamento abaixo:
      * 
      * <PRE>
      * objetoAtende = objetoAtendeRegra1 &amp; !objetoAtendeRegra2
      * </PRE>
      * 
      * @param spec A {@link Specification} a ser adicionada a esta regra.
-     * @return Uma {@link Rule} que atende a um objeto se a especificação da regra atual atender e a especificação informada não atender a este
+     * @return Uma {@link Rule} que atende a um objeto se a especifica&ccedil;ão da regra atual atender e a especifica&ccedil;ão informada não atender a este
      *         objeto.
      */
     public final Rule<O, D> andNot(final Specification<O, D> spec) {
@@ -393,25 +393,25 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     }
 
     /**
-     * Obtém os detalhes caso um objeto não atenda a esta regra.<BR>
+     * Obt&eacute;m os detalhes caso um objeto não atenda a esta regra.<BR>
      * <BR>
-     * <B>Observação:</B> Uma regra somente é populada com detalhes durante a execução do método {@link #isSatisfiedBy(Object)}. Caso seja invocado o
-     * método {@link #isSatisfiedBy(Object, Collection)}, os detalhes estarão na própria coleção passada como parâmetro.
+     * <B>Observa&ccedil;ão:</B> Uma regra somente &eacute; populada com detalhes durante a execu&ccedil;ão do m&eacute;todo {@link #isSatisfiedBy(Object)}. Caso seja invocado o
+     * m&eacute;todo {@link #isSatisfiedBy(Object, Collection)}, os detalhes estarão na própria cole&ccedil;ão passada como par&acirc;metro.
      * 
-     * @return Uma coleção vazia caso o objeto atenda a esta regra ou uma coleção contendo contendo os detalhes do motivo de ele não atender a regra.
+     * @return Uma cole&ccedil;ão vazia caso o objeto atenda a esta regra ou uma cole&ccedil;ão contendo contendo os detalhes do motivo de ele não atender a regra.
      */
     public final List<D> getDetails() {
         return Collections.unmodifiableList(details);
     }
 
     /**
-     * Verifica se o objeto informado atende, ou não, a especificação desta regra.<BR>
+     * Verifica se o objeto informado atende, ou não, a especifica&ccedil;ão desta regra.<BR>
      * <BR>
-     * <B>Observação:</B> Após a execução deste método, caso o objeto informado não atenda a regra, os detalhes poderão ser obtidos através do método
+     * <B>Observa&ccedil;ão:</B> Após a execu&ccedil;ão deste m&eacute;todo, caso o objeto informado não atenda a regra, os detalhes poderão ser obtidos atrav&eacute;s do m&eacute;todo
      * {@link #getDetails()}.
      * 
      * @param object O objeto a ser verificado.
-     * @return <code>true</code> se o objeto atender a especificação e <code>false</code> caso contrário.
+     * @return <code>true</code> se o objeto atender a especifica&ccedil;ão e <code>false</code> caso contrário.
      */
     public final boolean isSatisfiedBy(final O object) {
         details = new Details<D>();
@@ -421,56 +421,56 @@ public abstract class Rule<O, D> implements Specification<O, D> {
     /**
      * {@inheritDoc}<BR>
      * <BR>
-     * <B>Observação:</B> Este método somente manipula a coleção passada por parâmetro, não alterando o retorno do método {@link #getDetails()}, de
-     * forma que, após a execução dele, os detalhes estarão contidos no próprio parametro.
+     * <B>Observa&ccedil;ão:</B> Este m&eacute;todo somente manipula a cole&ccedil;ão passada por par&acirc;metro, não alterando o retorno do m&eacute;todo {@link #getDetails()}, de
+     * forma que, após a execu&ccedil;ão dele, os detalhes estarão contidos no próprio parametro.
      */
     public abstract boolean isSatisfiedBy(O object, Collection<D> details);
 
     /**
-     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especificação desta regra <B>NÃO</B> atender ao mesmo objeto.<BR>
+     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especifica&ccedil;ão desta regra <B>NÃO</B> atender ao mesmo objeto.<BR>
      * <BR>
-     * A operação <I>NOT</I> possui o comportamento abaixo:
+     * A opera&ccedil;ão <I>NOT</I> possui o comportamento abaixo:
      * 
      * <PRE>
      * objetoAtende = !objetoAtendeRegra
      * </PRE>
      * 
-     * @return Uma {@link Rule} que atende a um objeto se a especificação da regra atual não atender a este objeto.
+     * @return Uma {@link Rule} que atende a um objeto se a especifica&ccedil;ão da regra atual não atender a este objeto.
      */
     public final Rule<O, D> not() {
         return new Not<O, D>(this);
     }
 
     /**
-     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especificação desta regra <B>OU</B> a especificação informada também
+     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especifica&ccedil;ão desta regra <B>OU</B> a especifica&ccedil;ão informada tamb&eacute;m
      * atenderem ao mesmo objeto.<BR>
      * <BR>
-     * A operação <I>OR</I> possui o comportamento abaixo:
+     * A opera&ccedil;ão <I>OR</I> possui o comportamento abaixo:
      * 
      * <PRE>
      * objetoAtende = objetoAtendeRegra1 | objetoAtendeRegra2
      * </PRE>
      * 
      * @param spec A {@link Specification} a ser adicionada a esta regra.
-     * @return Uma {@link Rule} que atende a um objeto se a especificação da regra atual ou a especificação informada também atenderem a este objeto.
+     * @return Uma {@link Rule} que atende a um objeto se a especifica&ccedil;ão da regra atual ou a especifica&ccedil;ão informada tamb&eacute;m atenderem a este objeto.
      */
     public final Rule<O, D> or(final Specification<O, D> spec) {
         return new Or<O, D>(this, spec);
     }
 
     /**
-     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especificação desta regra atender <B>OU</B> a especificação informada
+     * Cria uma nova regra que somente atenderá a um objeto qualquer se a especifica&ccedil;ão desta regra atender <B>OU</B> a especifica&ccedil;ão informada
      * <B>NÃO</B>
      * atender ao mesmo objeto. <BR>
      * <BR>
-     * A operação <I>OR NOT</I> possui o comportamento abaixo:
+     * A opera&ccedil;ão <I>OR NOT</I> possui o comportamento abaixo:
      * 
      * <PRE>
      * objetoAtende = objetoAtendeRegra1 | !objetoAtendeRegra2
      * </PRE>
      * 
      * @param spec A {@link Specification} a ser adicionada a esta regra.
-     * @return Uma {@link Rule} que atende a um objeto se a especificação da regra atual atender ou a especificação informada não atender a este
+     * @return Uma {@link Rule} que atende a um objeto se a especifica&ccedil;ão da regra atual atender ou a especifica&ccedil;ão informada não atender a este
      *         objeto.
      */
     public final Rule<O, D> orNot(final Specification<O, D> spec) {
