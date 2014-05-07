@@ -16,14 +16,14 @@ import java.util.List;
  * - {@link #or(Specification)}<BR>
  * - {@link #orNot(Specification)}<BR>
  * - {@link #not()} <BR>
- * Outra característica interessante desta classe &eacute; o m&eacute;todo {@link #getDetails()} que obt&eacute;m detalhes do motivo de um objeto atender, ou n&atilde;o, 
+ * Outra caracter&iacute;stica interessante desta classe &eacute; o m&eacute;todo {@link #getDetails()} que obt&eacute;m detalhes do motivo de um objeto atender, ou n&atilde;o, 
  * dependendo da situa&ccedil;&atilde;o, a especifica&ccedil;&atilde;o da regra.<BR>
  * <BR>
  * <B><I>Veja o exemplo para entender como utiliza-la:</I></B><BR>
  * <BR>
  * Uma <tt>Pessoa</tt> tem os seguintes atributos: <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt>.<BR>
  * Para validar uma <tt>Pessoa</tt>, foram definidas as seguintes regras:<BR>
- * - O nome n&atilde;o pode ser <code>null</code> e deve come&ccedil;ar com uma letra maiúscula e ter uma ou mais letras minúsculas;<BR>
+ * - O nome n&atilde;o pode ser <code>null</code> e deve come&ccedil;ar com uma letra mai&uacute;scula e ter uma ou mais letras min&uacute;sculas;<BR>
  * - A idade n&atilde;o pode ser negativa;<BR>
  * - O sexo s&oacute; pode ser <code>'M'</code> ou <code>'F'</code>.<BR>
  * <BR>

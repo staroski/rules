@@ -5,7 +5,7 @@
  * <BR>
  * Uma <tt>Pessoa</tt> tem os seguintes atributos: <tt>nome</tt>, <tt>idade</tt> e <tt>sexo</tt>.<BR>
  * Para validar uma <tt>Pessoa</tt>, foram definidas as seguintes regras:<BR>
- * - O nome n&atilde;o pode ser <code>null</code> e deve come&ccedil;ar com uma letra maiúscula e ter uma ou mais letras minúsculas;<BR>
+ * - O nome n&atilde;o pode ser <code>null</code> e deve come&ccedil;ar com uma letra mai&uacute;scula e ter uma ou mais letras min&uacute;sculas;<BR>
  * - A idade n&atilde;o pode ser negativa;<BR>
  * - O sexo s&oacute; pode ser <code>'M'</code> ou <code>'F'</code>.<BR>
  * <BR>
