@@ -3,7 +3,7 @@ package br.com.staroski.rules;
 /**
  * Interface que representa a {@link Specification especifica&ccedil;&atilde;o} de uma {@link Rule regra} para determinado tipo de dado.<BR>
  * O crit&eacute;rio pra avaliar se um objeto atende ou n&atilde;o a uma especifica&ccedil;&atilde;o &eacute; realizado atrav&eacute;s da implementa&ccedil;&atilde;o do m&eacute;todo
- * {@link #check(Object)}.<BR>
+ * {@link #verify(Object)}.<BR>
  * Se o objeto atende &agrave; {@link Specification especifica&ccedil;&atilde;o}, ele deve retornar normalmente.<BR>
  * Se o objeto n&atilde;o atende &agrave; {@link Specification especifica&ccedil;&atilde;o}, ele deve lan&ccedil;ar uma exce&ccedil;&atilde;o do tipo {@link UnattendedException}.<BR>
  * <BR>

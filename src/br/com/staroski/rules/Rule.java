@@ -3,8 +3,10 @@ package br.com.staroski.rules;
 import java.util.*;
 
 /**
- * Esta classe &eacute; repons&aacute;vel por criar {@link Rule regras} reaproveit&aacute;veis a partir de simples {@link Specification especifica&ccedil;&otilde;es.<BR>
- * <BR> <I> Para obter inst&acirc;ncias desta classe, utilize o m&eacute;todo {@link #create(Specification)}.</I><BR>
+ * Esta classe &eacute; repons&aacute;vel por criar {@link Rule regras} reaproveit&aacute;veis a partir de simples {@link Specification
+ * especifica&ccedil;&otilde;es}.<BR>
+ * <BR>
+ * <I> Para obter inst&acirc;ncias desta classe, utilize o m&eacute;todo {@link #create(Specification)}.</I><BR>
  * <BR>
  * Atrav&eacute;s de uma inst&acirc;ncia de {@link Rule}, &eacute; poss&iacute;vel montar express&otilde;es complexas associando outras {@link Specification
  * expecifica&ccedil;&otilde;es} ou {@link Rule regras} atrav&eacute;s dos seguintes m&eacute;todos:<BR>
@@ -158,7 +160,7 @@ public abstract class Rule<T> {
 	 * Obt&eacute;m uma regra a partir de uma simples especifica&ccedil;&atilde;o, ou seja, informa-se uma implementa&ccedil;&atilde;o de {@link Specification}
 	 * correspondente a regra desejada e obt&eacute;m-se uma implementa&ccedil;&atilde;o de {@link Rule}.
 	 * 
-	 * @param <X>
+	 * @param <T>
 	 *            Tipo de dado do objeto que pode ou n&atilde;o atender as regras.
 	 * @param spec
 	 *            A {@link Specification} da qual ser&aacute; criada uma {@link Rule}.
@@ -219,11 +221,10 @@ public abstract class Rule<T> {
 	}
 
 	/**
-	 * Obt&eacute;m os detalhes caso um objeto n&atilde;o atenda a esta regra.<BR>
+	 * Obt&eacute;m os detalhes caso um objeto n&atilde;o atenda &agrave; esta regra.<BR>
 	 * <BR>
-	 * <B>Observa&ccedil;&atilde;o:</B> Uma regra somente &eacute; populada com detalhes durante a execu&ccedil;&atilde;o do m&eacute;todo
-	 * {@link #isSatisfiedBy(Object)}. Caso seja invocado o m&eacute;todo {@link #isSatisfiedBy(Object, Collection)}, os detalhes estar&atilde;o na
-	 * pr&oacute;pria cole&ccedil;&atilde;o passada como par&acirc;metro.
+	 * <B>Observa&ccedil;&atilde;o:</B> Os detalhes s&atilde;o obtidos durante a execu&ccedil;&atilde;o do m&eacute;todo {@link #isSatisfiedBy(Object)}, invocar este
+	 * m&eacute;todo sem ter invocado o {@link #isSatisfiedBy(Object)} antes, retornar&aacute; uma lista vazia.
 	 * 
 	 * @return Uma cole&ccedil;&atilde;o vazia caso o objeto atenda a esta regra ou uma cole&ccedil;&atilde;o contendo contendo os detalhes do motivo de ele
 	 *         n&atilde;o atender a regra.
@@ -277,10 +278,10 @@ public abstract class Rule<T> {
 	 * objetoAtende = objetoAtendeRegra1 || objetoAtendeRegra2
 	 * </PRE>
 	 * 
-	 * @param spec
-	 *            A {@link Specification} a ser adicionada a esta regra.
-	 * @return Uma {@link Rule} que atende a um objeto se a especifica&ccedil;&atilde;o da regra atual ou a especifica&ccedil;&atilde;o informada tamb&eacute;m
-	 *         atenderem a este objeto.
+	 * @param rule
+	 *            A {@link Rule regra} a ser adicionada a esta regra.
+	 * @return Uma {@link Rule regra} que atende a um objeto se a especifica&ccedil;&atilde;o da regra atual ou a especifica&ccedil;&atilde;o informada
+	 *         tamb&eacute;m atenderem &agrave; este objeto.
 	 */
 	public final Rule<T> or(final Rule<T> rule) {
 		return new Or<T>(this, rule);
@@ -306,14 +307,7 @@ public abstract class Rule<T> {
 	}
 
 	/**
-	 * Obt&eacute;m os detalhes caso um objeto n&atilde;o atenda a esta regra.<BR>
-	 * <BR>
-	 * <B>Observa&ccedil;&atilde;o:</B> Uma regra somente &eacute; populada com detalhes durante a execu&ccedil;&atilde;o do m&eacute;todo
-	 * {@link #isSatisfiedBy(Object)}. Caso seja invocado o m&eacute;todo {@link #isSatisfiedBy(Object, Collection)}, os detalhes estar&atilde;o na
-	 * pr&oacute;pria cole&ccedil;&atilde;o passada como par&acirc;metro.
-	 * 
-	 * @return Uma cole&ccedil;&atilde;o vazia caso o objeto atenda a esta regra ou uma cole&ccedil;&atilde;o contendo contendo os detalhes do motivo de ele
-	 *         n&atilde;o atender a regra.
+	 * Obt&eacute;m a lista modific&aacute;vel de detalhes desta {@link Rule regra}.
 	 */
 	protected final List<String> getModifiableDetails() {
 		return details;
