@@ -1,7 +1,7 @@
 package br.com.staroski.rules;
 
 /**
- * Superclasse de regras binárias.
+ * Superclasse de regras bin&aacute;rias.
  * 
  * @param <T> Tipo de dado do objeto que pode ou n&atilde;o atender as regras.
  */
@@ -31,14 +31,14 @@ abstract class BinaryRule<T> extends Rule<T> {
 	/**
 	 * @return
 	 */
-	public Rule<T> getFirstRule() {
+	protected final Rule<T> getFirstRule() {
 		return rule1;
 	}
 
 	/**
 	 * @return
 	 */
-	public Rule<T> getSecondRule() {
+	protected final Rule<T> getSecondRule() {
 		return rule2;
 	}
 }

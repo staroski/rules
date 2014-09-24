@@ -5,7 +5,7 @@ package br.com.staroski.rules;
  * 
  * @param <T> Tipo de dado do objeto que pode ou n&atilde;o atender as regras.
  */
-public final class And<T> extends BinaryRule<T> {
+final class And<T> extends BinaryRule<T> {
 
 	/**
 	 * Cria uma nova regra.

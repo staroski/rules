@@ -5,7 +5,7 @@ package br.com.staroski.rules;
  * 
  * @param <T> Tipo de dado do objeto que pode ou n&atilde;o atender as regras.
  */
-public final class Not<T> extends Rule<T> {
+final class Not<T> extends Rule<T> {
 
 	private Rule<T> rule;
 
@@ -16,6 +16,10 @@ public final class Not<T> extends Rule<T> {
 	 */
 	protected Not(Rule<T> rule) {
 		this.rule = rule;
+	}
+
+	protected final Rule<T> getRule() {
+		return rule;
 	}
 
 	/**
