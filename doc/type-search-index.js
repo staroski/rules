@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"br.com.staroski.rules","l":"Rule"},{"p":"br.com.staroski.rules","l":"Specification"},{"p":"br.com.staroski.rules","l":"UnattendedException"}]
