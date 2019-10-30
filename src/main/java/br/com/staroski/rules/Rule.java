@@ -230,7 +230,7 @@ public abstract class Rule<T> {
 	 *         n&atilde;o atender a regra.
 	 */
 	public final List<String> getDetails() {
-		// ninguÈm de fora pode modificar essa lista
+		// ningu√©m de fora pode modificar essa lista
 		return Collections.unmodifiableList(details);
 	}
 
@@ -259,12 +259,12 @@ public abstract class Rule<T> {
 	 * @return Uma {@link Rule} que atende a um objeto se a especifica&ccedil;&atilde;o da regra atual n&atilde;o atender a este objeto.
 	 */
 	public final Rule<T> not() {
-		// se j· est· negado
+		// se j√° est√° negado
 		if (this instanceof Not) {
 			// devolve a regra original
 			return ((Not<T>) this).getRule();
 		}
-		// sen„o nega a regra
+		// sen√£o nega a regra
 		return new Not<T>(this);
 	}
 
